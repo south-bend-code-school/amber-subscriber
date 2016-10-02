@@ -20,6 +20,6 @@ export default Ember.Service.extend({
 
     let bucketLocation = `${directory}/${timestamp}`;
 
-    return storageRef.upload(bucketLocation).put(photo,metadata);
+    return storageRef.child(bucketLocation).put(photo,metadata);
   }
 });

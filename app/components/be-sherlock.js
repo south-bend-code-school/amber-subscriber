@@ -12,12 +12,11 @@ export default EmberUploader.FileField.extend({
       let watson = this.get('reportToWatson');
       let storage = this.get('emberStorage');
 
-      storage.uploadPhoto('/uploads',photo)
-        .on('state_changed',null,function(/* error */){
+      let upload = storage.uploadPhoto('/uploads',photo);
+      upload.on('state_changed',null,function(/* error */){
           console.warn("error!");
         },function(/* success */){
-          console.log(this.snapshot.metadata.downloadURLs[0]);
-          let imageLocation = this.snapshot.metadata.downloadURLs[0];
+          let imageLocation = upload.snapshot.metadata.downloadURLs[0];
 
           watson.reportImage(imageLocation);
         });
