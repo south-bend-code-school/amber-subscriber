@@ -2,13 +2,25 @@ import Ember from 'ember';
 import EmberUploader from 'ember-uploader';
 
 export default EmberUploader.FileField.extend({
+  imageTools: Ember.inject.service(),
   emberStorage: Ember.inject.service(),
   reportToWatson: Ember.inject.service(),
   filesDidChange(files){
     let router = this.get('router');
+    let imageResizer = this.get('imageTools');
 
     if(!Ember.isEmpty(files)){
       let photo = files[0];
+      imageResizer.resize(photo, {
+        width: 480,
+        height: 640
+      }, function(blob, didItResize){
+        if(!didItResize){
+          console.warn("did not resize");
+        } else {
+          console.log('resized');
+        }
+      });
       let watson = this.get('reportToWatson');
       let storage = this.get('emberStorage');
 
@@ -22,6 +34,6 @@ export default EmberUploader.FileField.extend({
         });
     }
 
-    router.transitionTo('main.thank-you');
+    // router.transitionTo('main.thank-you');
   }
 });
