@@ -18,7 +18,7 @@ export default Ember.Service.extend({
       contentType: photo.type
     };
 
-    let bucketLocation = `${directory}/${this.timestamp()}`;
+    let bucketLocation = `${directory}/${timestamp}`;
 
     return storageRef.upload(bucketLocation).put(photo,metadata);
   }
