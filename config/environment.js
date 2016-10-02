@@ -12,8 +12,23 @@ module.exports = function(environment) {
         // e.g. 'with-controller': true
       }
     },
+    firebase: {
+      apiKey: 'AIzaSyAsrsesV1bbGPaEAgCk_mB1LuLDjkTmClw',
+      authDomain: 'amber-cab84.firebaseapp.com',
+      databaseURL: 'https://amber-cab84.firebaseio.com',
+      storageBucket: 'amber-cab84.appspot.com',
+      messagingSenderId: "537443621255"
+    },
+    contentSecurityPolicy: {
+      'script-src': "'self' wss://*.firebaseio.com",
+      'frame-src': "'self' https://*.firebaseapp.com",
+      'connect-src': "'self' wss://*.firebaseio.com https://*.googleapis.com"
+    },
 
     APP: {
+      Watson: {
+        URL: "https://atthack2016amberalert.mybluemix.net",
+      },
       // Here you can pass flags/options to your application instance
       // when it is created
     }
