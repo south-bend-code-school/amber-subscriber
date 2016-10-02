@@ -12,14 +12,13 @@ export default EmberUploader.FileField.extend({
     if(!Ember.isEmpty(files)){
       let photo = files[0];
       imageResizer.resize(photo, {
-        width: 480,
-        height: 640
+        width: 300,
+        height: 520
       }, function(blob, didItResize){
-        if(!didItResize){
-          console.warn("did not resize");
-        } else {
-          console.log('resized');
+        if(didItResize){
+          photo = blob;
         }
+        console.log(blob);
       });
       let watson = this.get('reportToWatson');
       let storage = this.get('emberStorage');
@@ -34,6 +33,6 @@ export default EmberUploader.FileField.extend({
         });
     }
 
-    // router.transitionTo('main.thank-you');
+    router.transitionTo('main.thank-you');
   }
 });
