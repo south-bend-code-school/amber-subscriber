@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import Ember from 'ember-uploader';
+import EmberUploader from 'ember-uploader';
 
 export default EmberUploader.FileField.extend({
   emberStorage: Ember.inject.service(),
